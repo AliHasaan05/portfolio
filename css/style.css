@@ -1,0 +1,130 @@
+/* ==========================================================================
+   ALI HASSAN - PORTFOLIO ENHANCEMENTS & TAILWIND CSS COMPANION
+   Vanilla CSS Animations, Glassmorphism, & Interaction Tweaks
+   ========================================================================== */
+
+/* Custom Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+}
+
+/* Nav Link Underline / Active States */
+.nav-link.active {
+  color: #0284c7;
+}
+
+.dark .nav-link.active {
+  color: #38bdf8;
+}
+
+/* Floating Back to Top Button Visibility */
+#backToTop.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Modal Open Visibility */
+#projectModalBackdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#projectModalBackdrop.active > div {
+  transform: scale(1);
+}
+
+/* Scroll Reveal Animations */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-element.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Project Card Hidden during filtering */
+.project-card.hidden {
+  display: none !important;
+}
+
+/* Toast Notification Styling */
+.toast {
+  padding: 0.75rem 1.25rem;
+  background-color: rgba(15, 23, 42, 0.9);
+  color: #f8fafc;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  backdrop-filter: blur(12px);
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: toastIn 0.3s ease, toastOut 0.3s ease 3.7s forwards;
+}
+
+[data-theme="light"] .toast {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  border-color: rgba(2, 132, 199, 0.3);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(16px); }
+}
+
+/* Accessibility: Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-element {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Circular Avatar Glow & Orbital Animation */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-orbital {
+  animation: spinSlow 20s linear infinite;
+}
+
